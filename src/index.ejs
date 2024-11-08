@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <script defer src="/socket.io/socket.io.js"></script>
+    <script defer src="/js/main.js"></script>
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="user-info">
+                <img src="user-avatar.png" alt="User" class="avatar">
+                <p>Usuario: <strong>Nombre</strong></p>
+            </div>
+            <nav>
+                <button class="btn">Venta</button>
+                <button class="btn logout">Salir</button>
+            </nav>
+        </aside>
+        <main class="content">
+            <h1>Top productos en demanda</h1>
+            <div class="charts">
+                <div>
+                    <h2>Mayorista</h2>
+                    <canvas id="chartMayorista"></canvas>
+                </div>
+                <div>
+                    <h2>Cal</h2>
+                    <canvas id="chartCal"></canvas>
+                </div>
+            </div>
+            <div class="sales-log">
+                <h2>Registro de Ventas</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Producto</th>
+                            <th>Fecha</th>
+                            <th>Hora</th>
+                            <th>Precio</th>
+                        </tr>
+                    </thead>
+                    <tbody id="logVentas">
+                        <!-- Las filas de ventas se llenarán con JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
