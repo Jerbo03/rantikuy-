@@ -1,16 +1,20 @@
+require('./db');
 const express = require('express') 
-//require('dotenv').config();
+const userRoutes = require('./routes/userRoutes');    
+require('dotenv').config();
+const morgan = require('morgan');
+
+
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 4000;
 
 // middlewares
 app.use(express.json()); 
-
+app.use(morgan('dev'));
+app.use('/api',userRoutes);
 // routes
-app.get('/', (req, res) => {
-    res.send('Hello World')
-})
+//app.use('/users', userRoutes);
 
 app.listen(port, () => {
     console.log(`Servidor corriendo en el puerto ${port} 🚀`)
