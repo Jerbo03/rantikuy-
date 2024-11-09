@@ -1,4 +1,22 @@
 const userSchema = require("../models/User");
+const jwt = require('jsonwebtoken');
+
+exports.login = (req, res) => {
+    const { email, password } = req.body;
+    userSchema.findOne({ email, password })
+        .then((data) => {
+            if (data) {
+                const token = jwt.sign({ email, password }, process.env.SECRET_KEY);
+                res.status(200).json({ token });
+            } else {
+                res.status(401).json({ message: "Unauthorized" });
+            }
+        })
+        .catch((error) => {
+            res.status(500).json(error);
+        }
+    );
+}
 
 exports.createUser = (req, res) => {
     const user = userSchema(req.body);
